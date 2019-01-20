@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Dubai",
+    "location_type": "City",
+    "woeid": 1940345,
+    "latt_long": "25.269440,55.308651"
+  },
+  {
+    "title": "Dublin",
+    "location_type": "City",
+    "woeid": 560743,
+    "latt_long": "53.343761,-6.249530"
+  }
+]

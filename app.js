@@ -13,8 +13,10 @@ app.use((req, res, next) => {
 
 app.use('/', require('./src/routes'))
 
-app.listen(3001, () => {
-  console.log(`listening on port 3001`)
-})
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3001, () => {
+    console.log(`listening on port 3001`)
+  })
+}
 
 module.exports = app
