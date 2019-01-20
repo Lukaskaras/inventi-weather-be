@@ -28,13 +28,14 @@ router.get('/location/search', async (req, res) => {
 
 router.get('/location/:woeid', async (req, res) => {
   const { woeid } = req.params
-  const response = await axios({
-    method: 'get',
-    url: `${config.weatherApi.url}/f${woeid}`
-  })
-
-  if (response.status !== 200) {
-    res.status(response.status).send()
+  let response
+  try {
+    response = await axios({
+      method: 'get',
+      url: `${config.weatherApi.url}/${woeid}`
+    })
+  } catch (error) {
+    res.status(error.response.status).send(error.message)
     return
   }
 
@@ -42,7 +43,7 @@ router.get('/location/:woeid', async (req, res) => {
   const consolidatedWeather = data.consolidated_weather
   const formatted = consolidatedWeather.map((day) => {
     return {
-      weatherState: day.weather_state_name,
+      weatherState: correctWeatherState(day),
       date: day.applicable_date,
       minTemp: Math.round(day.min_temp),
       maxTemp: Math.round(day.max_temp)
@@ -50,5 +51,13 @@ router.get('/location/:woeid', async (req, res) => {
   })
   res.status(200).send(formatted)
 })
+
+const correctWeatherState = (day) => {
+  if ((Math.round(day.max_temp)) > 2) {
+    return day.weather_state_abbr
+  }
+
+  return (['hr', 'lr', 's'].includes(day.weather_state_abbr)) ? 'sn' : day.weather_state_abbr
+}
 
 module.exports = router
