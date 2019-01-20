@@ -1,6 +1,6 @@
 # inventi-weather-be
 
-Backend app, runs on port `3001`
+Backend service, runs on port `3001`
 
 All you need to do is: 
 
