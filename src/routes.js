@@ -5,13 +5,11 @@ const axios = require('axios')
 
 router.get('/location/search', async (req, res) => {
   const { query } = req.query
-  const response = await axios({
-    method: 'get',
-    url: `${config.weatherApi.url}/search?query=${query}`
-  })
-
-  if (response.status !== 200) {
-    res.status(response.status).send()
+  let response
+  try {
+    response = await axios.get(`${config.weatherApi.url}/search?query=${query}`)
+  } catch (error) {
+    res.status(error.response.status).send(error.message)
     return
   }
 
@@ -30,10 +28,7 @@ router.get('/location/:woeid', async (req, res) => {
   const { woeid } = req.params
   let response
   try {
-    response = await axios({
-      method: 'get',
-      url: `${config.weatherApi.url}/${woeid}`
-    })
+    response = await axios.get(`${config.weatherApi.url}/${woeid}`)
   } catch (error) {
     res.status(error.response.status).send(error.message)
     return

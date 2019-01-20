@@ -1,0 +1,38 @@
+[
+  {
+    "weatherState" : "lc",
+    "date"         : "2019-01-19",
+    "minTemp"      : 17,
+    "maxTemp"      : 27
+  },
+  {
+    "weatherState" : "lr",
+    "date"         : "2019-01-20",
+    "minTemp"      : 12,
+    "maxTemp"      : 23
+  },
+  {
+    "weatherState" : "lc",
+    "date"         : "2019-01-21",
+    "minTemp"      : 7,
+    "maxTemp"      : 21
+  },
+  {
+    "weatherState" : "lr",
+    "date"         : "2019-01-22",
+    "minTemp"      : 20,
+    "maxTemp"      : 24
+  },
+  {
+    "weatherState" : "lr",
+    "date"         : "2019-01-23",
+    "minTemp"      : 22,
+    "maxTemp"      : 26
+  },
+  {
+    "weatherState" : "hr",
+    "date"         : "2019-01-24",
+    "minTemp"      : 22,
+    "maxTemp"      : 26
+  }
+]
